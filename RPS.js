@@ -1,3 +1,30 @@
+let escolha1 = document.querySelector('#rock')
+let escolha2 = document.querySelector('#paper')
+let escolha3 = document.querySelector('#scissor')
+let jogar = document.querySelector('.jogar')
+let rodape = document.querySelector('.rodape')
+let jogadaJogador
+let jogadaComputador 
+let resultado
+
+escolha1.addEventListener('click', () =>{ jogadaJogador = 'rock'})
+escolha2.addEventListener('click', () =>{ jogadaJogador = 'paper'})
+escolha3.addEventListener('click', () =>{ jogadaJogador = 'scissor'})
+
+jogar.addEventListener('click', () =>{
+    jogadaComputador = getComputerChoice()
+    playRound(jogadaJogador, jogadaComputador)
+    const p = document.createElement('p')
+    rodape.appendChild(p)
+    p.textContent = resultado
+
+
+})
+
+
+
+
+
 function getComputerChoice (){
     let number = Math.floor(Math.random() * 3) + 1
     let luiz
@@ -10,38 +37,53 @@ function getComputerChoice (){
     }
     return luiz
 }   
-
-let jogador = 'scissor'
-console.log(computer)
-let computer = getComputerChoice()
 function playRound(jogador, computer){
     if (jogador == computer){
-        console.log('empate')
+        resultado = 'empate'
     } else{
         if (jogador == 'scissor'){
             if (computer == 'rock'){
-                console.log('jogador perdeu')
+                resultado = 'jogador perdeu'
             } else if (computer == 'paper'){
-                console.log('jogador ganhou')
+                resultado = 'jogador ganhou'
             }
         }
         if (jogador == 'paper'){
             if (computer == 'rock'){
-                console.log('jogador ganhou')
+                resultado = 'jogador ganhou'
             } else if (computer == 'scissor'){
-                console.log('jogador perdeu')
+                resultado = 'jogador perdeu'
             }
         }
         if (jogador == 'rock'){
             if (computer == 'paper'){
-                console.log('jogador perdeu')
+                resultado = 'jogador perdeu'
             } else if (computer == 'scissor'){
-                console.log('jogador ganhou')
+                resultado = 'jogador ganhou'
             }
         }
         
     }
 
 }
+console.log(jogadaJogador)
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+let jogador = 'scissor'
+console.log(computer)
+let computer = getComputerChoice()
+
 playRound(jogador, computer)
 
+*/
